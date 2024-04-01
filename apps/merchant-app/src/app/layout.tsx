@@ -1,27 +1,24 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "./globals.css";
 import Providers from "./provider";
-import MyAppBar from "./myappbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "User-App",
-  description: "PayTM User App",
+  title: "PayTM Merchant App",
+  description: "Merchant App",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}): JSX.Element {
+}>) {
   return (
     <html lang="en">
       <Providers>
-      <body className={inter.className}>
-        <MyAppBar />
-        {children}</body>
+      <body className={inter.className}>{children}</body>
       </Providers>
     </html>
   );
