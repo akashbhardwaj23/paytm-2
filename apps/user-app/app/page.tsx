@@ -1,8 +1,13 @@
+import { getServerSession } from "next-auth";
+import { redirect } from 'next/navigation'
+import { authOptions } from "./lib/auth";
 
-export default function Page(): JSX.Element {
-  return (
-    <div className="bg-blue-900 text-white">
-      Tailwind working
-    </div>
-  );
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+  if (session?.user) {
+    redirect('/dashboard')
+  } else {
+    redirect('/api/auth/signin')
+  }
+  
 }
