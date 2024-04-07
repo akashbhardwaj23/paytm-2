@@ -27,6 +27,7 @@ export default async function(){
    // This is the P2P transactions Page
     const p2pTransactions = await getP2pTransaction();
     // console.log(p2pTransactions);
+    // This is a P2p Transaction 
     return <div className="w-full">
         <P2PTransaction transactions={p2pTransactions}/>
     </div>
