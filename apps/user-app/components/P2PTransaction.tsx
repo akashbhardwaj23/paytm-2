@@ -7,6 +7,7 @@ export const P2PTransaction = ({
         time: Date,
         amount: number,
         // TODO: Can the type of `status` be more specific?
+        // Type of status can be more specific
         id: number,
     }[]
 }) => {
