@@ -35,6 +35,7 @@ async function getOnRampTransactions() {
 
 export default async function() {
     const balance = await getBalance();
+    // gives the balance of the user
     const transactions = await getOnRampTransactions();
 
     return <div className="w-screen">
