@@ -1,81 +1,79 @@
-# Turborepo starter
+# PayTM
 
-This is an official starter Turborepo.
+This is a Web App Similar To PayTM 
 
-## Using this example
+## Technolgy Used : 
 
-Run the following command:
+- `NEXT JS` - A User and Merchant Application built in Next js Both having Backend As Well
+- `Prisma` - This Application uses Prisma with PostgresSql as a database (Present in package/db)
+- `Express Js` - Used Inside the bank-webhook folder
+- `zod` - For Input Validation
+- `TypeScript` - As The Primary Language
+- `Tailwind CSS` - Used as a Styling Language
+- `Next Auth` - For Authentication with Google and Github
 
-```sh
-npx create-turbo@latest
-```
 
-## What's inside?
+# SignUp and SignIn Page
 
-This Turborepo includes the following packages/apps:
+![SigninPage](/apps/user-app/public//login.png)
 
-### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+# Home Page 
+![home](/apps//user-app//public/transfer.png)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+# P2p Transaction Page
+![p2p](/apps//user-app/public/p2p.png)
 
-### Utilities
 
-This Turborepo has some additional tools already setup for you:
+# Starting The Application Locally
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
-### Build
+1. Run at Root Directory
+    ```javascript
+     npm install
+    ```
+2. Get Postgres Database and Paste the URL in package/db/.env
+    ```
+        cd packages/db
+        mkdir .env
+    ```
 
-To build all apps and packages, run the following command:
+3. In Packages/db Do - 
+    ```javascript
+        npx prisma generate
+    ```
 
-```
-cd my-turborepo
-pnpm build
-```
+4. Go To apps/user-app and create a .env file
+    ```
+        cd apps/user-app
+        mkdir .env
+     ```
+     Paste these In .env
+     ```javascript
+        NEXT_SECRET= "Your secret"
+        GOOGLE_CLIENT_ID = "Your client Id"
+        GOOGLE_CLIENT_SECRET = "Your Google Client Secret"
+        GITHUB_CLIENT_ID = "GitHub client Id"
+        GITHUB_CLIENT_SECRET = "Github client id"
+        NEXTAUTH_URL= "http://localhost:3000"
+    ```
 
-### Develop
+5. Go to apps/merchant-app and create a .env
+    ```
+        cd apps/merchant-app
+        mkdir .env
+     ```
+     Paste these In .env
+     ```javascript
+        NEXT_SECRET= "Your secret"
+        GOOGLE_CLIENT_ID = "Your client Id"
+        GOOGLE_CLIENT_SECRET = "Your Google Client Secret"
+        NEXTAUTH_URL= "http://localhost:3001"
+    ```
 
-To develop all apps and packages, run the following command:
+6. ### And Thats All Enjoy The Application
 
-```
-cd my-turborepo
-pnpm dev
-```
 
-### Remote Caching
+## Licence :
+### [MIT](https://github.com/expressjs/express/blob/master/LICENSE)
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
