@@ -30,6 +30,8 @@ export async function p2pTransfer(to : string, amount : number){
 
     try {  
         await prisma.$transaction(async (tsx) => {
+            await tsx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${Number(from)} FOR UPDATE`;
+
             const fromBalance = await tsx.balance.findUnique({
                 where : {userId : Number(from)}
             });
@@ -37,10 +39,11 @@ export async function p2pTransfer(to : string, amount : number){
             console.log('Above Sleep')
             await new Promise(resolve => setTimeout(resolve, 4000));
 
-            console.log('Below Sleep')
+            console.log('after Sleep')
 
             // tells the balance of that user 
             if(!fromBalance || fromBalance.amount < amount){
+                console.log("Here")
                 throw new Error('Insufficient Funds');
             };
 
@@ -64,12 +67,22 @@ export async function p2pTransfer(to : string, amount : number){
                 }
             });
 
+
+            await tsx.p2pTransfer.create({
+                data : {
+                    fromUserId : Number(from),
+                    toUserId : toUser.id,
+                    amount : amount,
+                    timestamp : new Date
+                }
+            });
+
         });
 
-        
+        //locking
         
     } catch (error) {
-        
+        console.log(error)
     }
 
 }

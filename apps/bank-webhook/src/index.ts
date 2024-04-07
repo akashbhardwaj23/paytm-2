@@ -1,10 +1,52 @@
 import express from "express"
 import db from "@repo/db/client"
+import z from "zod"
 
 const app = express();
 
 
 app.use(express.json());
+app.use(express.static("/public"));
+
+
+
+
+// const paymentInformationType = z.object({
+//     token : z.string(),
+//     userId : z.string(),
+//     amount : z.string()
+// })
+
+
+
+// app.post("/mybank", (req, res) => {
+//     const paymentInformation : {
+//         token : string,
+//         userId : string,
+//         amount : string
+//     } = {
+//         token : req.body.token,
+//         userId : req.body.user_identifier,
+//         amount : req.body.amount,
+//     };
+//     console.log(req.body)
+
+
+//     // const success = paymentInformationType.safeParse(req.body);
+
+//     // console.log(success)
+
+
+//     // if(!success.success) return res.status(401).json({message : "Invaild Input"});
+
+//     // check the token and userid
+
+//     res.redirect("/hdfcWebhook")
+
+
+// })
+
+
 
 app.post("/hdfcWebhook", async (req, res) => {
     // Add Zod Validation here 
