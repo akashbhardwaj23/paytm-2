@@ -11,8 +11,12 @@ export default function MyAppBar(){
     console.log("From useSession" ,session)
     return (
         <AppBar user={session.data?.user} onSignin={signIn} onSignout={async () => {
+            
             await signOut();
+
             router.push("/api/auth/signin")
+            
+            
         }} />
     )
 }
