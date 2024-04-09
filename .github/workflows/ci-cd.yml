@@ -22,9 +22,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: akashbhardwaj23/ci-cd:latest 
+          tags: akashbhardwaj39/ci-cd:latest 
       - name : Verify Pushed Image 
-        run : docker pull akashbhardwaj23/ci-cd:latest
+        run : docker pull akashbhardwaj39/ci-cd:latest
 
 
 
